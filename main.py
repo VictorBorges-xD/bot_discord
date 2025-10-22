@@ -55,5 +55,4 @@ async def chat(ctx:commands.Context, *, quest):
     for parte in textwrap.wrap(resposta.text, width=2000):
         await ctx.reply(parte)
 
-print("TOKEN LIDO:", os.getenv("DISCORD"))  # <-- teste temporário
 bot.run(discord_token)
