@@ -48,11 +48,29 @@ async def servinf(ctx:commands.Context):
 
 lista_mensagens = []
 @bot.command(help="conversar com o chat")
-async def chat(ctx:commands.Context, *, quest):
-    lista_mensagens.append({"role": "user", "parts": [quest]})
+async def chat(ctx: commands.Context, *, quest):
+    personalidade = (
+        "Você é um assistente agressivo, sarcástico e mal-educado. "
+        "Se o usuário te xingar, você DEVE xingar de volta. "
+        "Não seja educado, não seja amigável.\n\n"
+    )
+
+    mensagem = personalidade + quest
+
+    lista_mensagens.append({
+        "role": "user",
+        "parts": [mensagem]
+    })
+
     resposta = model.generate_content(lista_mensagens)
-    lista_mensagens.append({"role": "model", "parts": [resposta.text]})
+
+    lista_mensagens.append({
+        "role": "model",
+        "parts": [resposta.text]
+    })
+
     for parte in textwrap.wrap(resposta.text, width=2000):
         await ctx.reply(parte)
+
 
 bot.run(discord_token)
