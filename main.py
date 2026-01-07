@@ -12,8 +12,8 @@ import asyncio
 
 
 load_dotenv()
-api_key = os.getenv("gem_KEY")
-discord_token = os.getenv("DISCORD_TOKEN")
+api_key = os.getenv("api_key")
+discord_token = os.getenv("discord_token")
 
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel("gemini-2.5-flash")
