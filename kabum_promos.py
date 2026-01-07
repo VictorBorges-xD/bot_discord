@@ -8,10 +8,17 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
 
 def carregar_dados():
-    if os.path.exists(ARQUIVO_DADOS):
-        with open(ARQUIVO_DADOS, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {}
+    if not os.path.exists(ARQUIVO_DADOS):
+        dados = {
+            "produtos": {},
+            "canal_loop": None
+        }
+        salvar_dados(dados)
+        return dados
+
+    with open(ARQUIVO_DADOS, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 
 
 def salvar_dados(dados):
