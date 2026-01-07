@@ -1,2 +1,4 @@
 .env
 __pycache__
+dados_kabum.json
+venv/
