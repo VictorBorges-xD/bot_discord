@@ -16,7 +16,7 @@ api_key = os.getenv("api_key")
 discord_token = os.getenv("discord_token")
 
 genai.configure(api_key=api_key)
-model = genai.GenerativeModel("gemma-3-27b")
+model = genai.GenerativeModel("gemma-3-27b-it")
 
 permissoes = discord.Intents.all() #garante ao bot todas as permissoes do discord
 bot = commands.Bot('.', intents = permissoes, help_command=None)
